@@ -1,0 +1,29 @@
+class Solution:
+   
+    def searchRange(self, nums: List[int], target: int) -> List[int]:
+        result = [-1,-1]
+        result[0] = self.searchIndex(nums,target,start =True)
+        result[1] = self.searchIndex(nums,target,start = False)
+        return result
+    
+
+
+
+    def searchIndex(self,nums,target,start):
+        index = -1
+        left = 0
+        right = len(nums)-1
+        while left <= right:
+            mid = left + (right -left)//2
+            if nums[mid] == target:
+                index = mid;
+                if start == True:
+                    right = mid-1
+                else:
+                    left = mid+1
+            elif nums[mid] > target:
+                right = mid -1
+            else:
+                left = mid+1
+        return index
+                     
