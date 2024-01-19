@@ -1,5 +1,17 @@
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
+        if prices == None or len(prices) <2 :
+            return 0
+        min_p = prices[0]
+        profit = 0
+        for i in range(len(prices)):
+            if(prices[i]<min_p):
+                min_p = prices[i]
+            profit = max(prices[i]-min_p, profit)
+        return profit
+
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
         # profit = 0
         # buy = 0. # prices[buy] min{prices[k],k <=i}
         # sell = 1. # prices[sell] max(prices[k]), k >=j
